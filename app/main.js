@@ -178,6 +178,9 @@ function wordPlacement() { //função responsavel por posicionar as palavras sel
                         trueTest = false
                     }
                     test = trueTest
+
+                    // Ideia de como resolver o bug: havera um contador de tentativa, quando as tentativa passarem de x número uma função será executada
+                    // a função serteara uma nova palavra e a substituira na chosedWordList e as tentativas continuaram. Desta forma a palavra provavelmente encaixara
                 } 
                 if (test === true && trueTest === true) {
                     for (let i = 0; i < chosedWordString.length; i++) {
@@ -218,7 +221,7 @@ function eventListenerCreator() { //função responsavel por criar os event list
         for (let columnNumber = 0; columnNumber < tableSizeRow; columnNumber++) {
             const cell  = document.querySelector(`#r${rowNumber}-c${columnNumber}`)
             cell.addEventListener('click', (e) => {
-                if (clickCount == 1) { // as funções e a variavei presente neste if, estão escritas no arquivo pĺay.js
+                if (clickCount === true) { // as funções e a variavei presente neste if, estão escritas no arquivo pĺay.js
                     firstClick(e)      
                 } else {
                     secondClick(e)                 
@@ -237,6 +240,7 @@ btnStart.addEventListener('click', () => {
     wordPlacement() 
     randomFiller()
     attTableElement()
+    eventListenerCreator()
 })
 
 
