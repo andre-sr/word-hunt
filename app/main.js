@@ -99,23 +99,26 @@ function wordPlacement() { //função responsavel por posicionar as palavras sel
         let rowNumber 
         let columnNumber
 
-        while (test === false && x < 4) {
+        while (test == false && x < 4) { //nô que cuida do posicionamento das palavras na horizontal
             console.log(x)
             rowNumber = Math.floor(Math.random() * tableSizeRow)
             columnNumber  = Math.floor(Math.random() * tableSizeColumn)
 
             if (tableSizeRow - columnNumber >= chosedWordString.length) {
+                test = true
+                trueTest = true
                 for (let i = 0; i < chosedWordString.length; i++) {
-                    if (tableSolution[rowNumber][columnNumber+i] === '0') {
-                        test = true
+
+                    if (tableSolution[rowNumber][columnNumber+i] !== '0') {
+                        test = false
                     }
                     if (tableSolution[rowNumber][columnNumber+i] === chosedWordString[i]) {
                         test = true
                     }
                     if (test === false) {
-                        trueTest = false 
-                        i = chosedWordList.length
+                        trueTest = false
                     }
+                    test = trueTest
                 } 
                 if (test === true && trueTest === true) {
                     for (let i = 0; i < chosedWordString.length; i++) {
@@ -124,13 +127,68 @@ function wordPlacement() { //função responsavel por posicionar as palavras sel
                 }
             }
         }
-       
+
+       while (test == false && x > 3 && x < 8) { //nô que cuida do posicionamento das palavras na vertical
+            console.log(x)
+            rowNumber = Math.floor(Math.random() * tableSizeRow)
+            columnNumber  = Math.floor(Math.random() * tableSizeColumn)
+
+            if (tableSizeColumn - rowNumber >= chosedWordString.length) {
+                test = true
+                trueTest = true
+                for (let i = 0; i < chosedWordString.length; i++) {
+
+                    if (tableSolution[rowNumber+i][columnNumber] !== '0') {
+                        test = false
+                    }
+                    if (tableSolution[rowNumber+i][columnNumber] === chosedWordString[i]) {
+                        test = true
+                    }
+                    if (test === false) {
+                        trueTest = false
+                    }
+                    test = trueTest
+                } 
+                if (test === true && trueTest === true) {
+                    for (let i = 0; i < chosedWordString.length; i++) {
+                        tableSolution[rowNumber+i][columnNumber] = chosedWordString[i]
+                    }
+                }
+            }
+        }
 
 
-        
+        while (test == false && x > 7 && x < 12) { //nô responsavel pelo posicionamento das palavras na diagonal
+            console.log(x)
+            rowNumber = Math.floor(Math.random() * tableSizeRow)
+            columnNumber  = Math.floor(Math.random() * tableSizeColumn)
+
+            if (tableSizeColumn - rowNumber >= chosedWordString.length && tableSizeRow - columnNumber >= chosedWordString.length) {
+                test = true
+                trueTest = true
+                for (let i = 0; i < chosedWordString.length; i++) {
+
+                    if (tableSolution[rowNumber+i][columnNumber+i] !== '0') {
+                        test = false
+                    }
+                    if (tableSolution[rowNumber+i][columnNumber+i] === chosedWordString[i]) {
+                        test = true
+                    }
+                    if (test === false) {
+                        trueTest = false
+                    }
+                    test = trueTest
+                } 
+                if (test === true && trueTest === true) {
+                    for (let i = 0; i < chosedWordString.length; i++) {
+                        tableSolution[rowNumber+i][columnNumber+i] = chosedWordString[i]
+                    }
+                }
+            }
+        }
     }
+
     tableSolutionToTableRepresentatio()
-    
 }
 
 function tableSolutionToTableRepresentatio() {
@@ -156,7 +214,18 @@ function diagonalPlacement() { //função responsavel pelas palavras que serão 
 }
 
 function eventListenerCreator() { //função responsavel por criar os event listener para todas as celulas do table
-
+    for (let rowNumber = 0; rowNumber < tableSizeRow; rowNumber++) {
+        for (let columnNumber = 0; columnNumber < tableSizeRow; columnNumber++) {
+            const cell  = document.querySelector(`#r${rowNumber}-c${columnNumber}`)
+            cell.addEventListener('click', (e) => {
+                if (clickCount == 1) { // as funções e a variavei presente neste if, estão escritas no arquivo pĺay.js
+                    firstClick(e)      
+                } else {
+                    secondClick(e)                 
+                } 
+            })    
+        }
+    }
 }
 
 
