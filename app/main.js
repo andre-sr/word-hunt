@@ -8,7 +8,18 @@ let tableSizeColumn = 17;
 let tableRepresentation = [];
 let tableSolution = [];
 
-const wordList = ["banana", "carro", "cachorro", "computador", "lua", "bicicleta", "sol", "gato", "livro", "montanha", "chocolate", "elefante", "avião", "jardim", "telefone", "piano", "sorvete", "praia", "foguete", "eletricidade", "dinossauro", "navio", "chá", "sapato", "cadeira", "escola", "planeta", "microfone", "borboleta", "aranha", "macaco", "tigre", "leão", "bola", "uva", "morango", "pera", "abacaxi", "laranja", "limão", "pêssego", "kiwi", "melancia", "melão", "goiaba", "maçã", "cenoura", "beterraba", "alface"]
+const wordList = [
+    "banana", "carro", "cachorro", "computador", "lua", "bicicleta", "sol", "gato", "livro", "montanha",
+    "chocolate", "elefante", "avião", "jardim", "telefone", "piano", "sorvete", "praia", "foguete",
+    "eletricidade", "dinossauro", "navio", "chá", "sapato", "cadeira", "escola", "planeta", "microfone",
+    "borboleta", "aranha", "macaco", "tigre", "leão", "bola", "uva", "morango", "pera", "abacaxi", "laranja",
+    "limão", "pêssego", "kiwi", "melancia", "melão", "goiaba", "maçã", "cenoura", "beterraba", "alface",
+    "avestruz", "quadro", "cachecol", "laptop", "camisa", "caneta", "violão", "espada", "amendoim", "tubarão",
+    "papagaio", "teclado", "espelho", "almofada", "colher", "travesseiro", "tênis", "cometa", "almofada", "travesseiro",
+    "quadro", "vela", "escova", "pincel", "girafa", "escorregador", "pijama", "piscina", "escova", "espelho",
+    "mochila", "fantasia", "lápis", "hidratante", "fotografia", "caixa", "pente", "joaninha", "picolé", "diamante"
+];
+const wordListBug = ["pneu", "poggers", "pé", "chat", "inca"]  
 
 let chosedWordList = []
 
@@ -95,7 +106,7 @@ function wordPlacement() { //função responsavel por posicionar as palavras sel
     for (let x = 0; x < chosedWordList.length; x++) {
         var test = false
         var trueTest = true
-        const chosedWordString = chosedWordList[x] 
+        let chosedWordString = chosedWordList[x] 
         let rowNumber 
         let columnNumber
 
@@ -132,6 +143,7 @@ function wordPlacement() { //função responsavel por posicionar as palavras sel
             console.log(x)
             rowNumber = Math.floor(Math.random() * tableSizeRow)
             columnNumber  = Math.floor(Math.random() * tableSizeColumn)
+            
 
             if (tableSizeColumn - rowNumber >= chosedWordString.length) {
                 test = true
@@ -154,12 +166,14 @@ function wordPlacement() { //função responsavel por posicionar as palavras sel
                         tableSolution[rowNumber+i][columnNumber] = chosedWordString[i]
                     }
                 }
+                
             }
         }
 
-
+        var contError = 0
         while (test == false && x > 7 && x < 12) { //nô responsavel pelo posicionamento das palavras na diagonal
-            console.log(x)
+            //console.log(x)
+            
             rowNumber = Math.floor(Math.random() * tableSizeRow)
             columnNumber  = Math.floor(Math.random() * tableSizeColumn)
 
@@ -186,6 +200,25 @@ function wordPlacement() { //função responsavel por posicionar as palavras sel
                     for (let i = 0; i < chosedWordString.length; i++) {
                         tableSolution[rowNumber+i][columnNumber+i] = chosedWordString[i]
                     }
+                }
+                contError = contError + 1
+                console.log('pqp')
+                if (contError > 100) {
+                    let keepKnot = true
+                   // while (keepKnot = true) {
+                      //  keepKnot = false
+                        let chosedWordN = Math.floor(Math.random() * wordListBug.length)
+                        let newWord = wordListBug[chosedWordN]
+                       // if (chosedWordList.includes(newWord)) {
+                            keepKnot = false
+                        
+                            chosedWordList[x] = newWord
+                            chosedWordString = chosedWordList[x] 
+                            contError = 0
+                       
+                        console.log('Tentativa de substituiçãoda palavra')
+                    //}
+                    console.log(`a palavra foi substituida. nova palavra: ${chosedWordString}`)
                 }
             }
         }
@@ -235,12 +268,13 @@ function eventListenerCreator() { //função responsavel por criar os event list
 //EVENTS
 btnStart.addEventListener('click', () => {
     choseWord()
-    attWordListElement()
+    
 
     wordPlacement() 
     randomFiller()
     attTableElement()
     eventListenerCreator()
+    attWordListElement()
 })
 
 
