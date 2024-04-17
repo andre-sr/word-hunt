@@ -1,0 +1,172 @@
+body {
+    background-color: #242a2a;
+    color:  #ffffff;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+header {
+    font-size: 2em;
+    padding: 0.2em 0 1em 0 ; 
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.container-game-info, .container-right{
+    width: 8em;
+
+}
+
+.container-game-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-game-info button {
+    width: 3.5em;
+    height: 2em;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.049);
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.container-game-info button:hover {
+    background-color: rgba(255, 255, 255, 0.377);
+}
+
+.record-list-container {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+}
+
+.record-list-container h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.record-list-container ol {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+
+.table-container {
+    margin-top: 1em;
+    padding: 0 2em;
+}
+
+table {
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+
+
+td {
+    width: 1.4em;
+    height: 1.4em;
+    border: 1px solid #ffffff0c;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 1px; 
+}
+
+.green-cell {
+    background-color: #00800061;
+}
+
+td:hover {
+    background-color: rgba(240, 248, 255, 0.215);
+}
+
+.selected-cell {
+    background-color: rgba(240, 248, 255, 0.215);
+}
+
+.word {
+    font-size: 1.2em;
+    padding: 2px 0px;
+    margin-top: 3px;
+    border-bottom: 1px solid #ffffff20;
+}
+
+.green-word {
+    border-bottom: 1px solid #0080006e;
+    color: #bfefbf;
+}
+
+.container-right h1,span {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+footer {
+    color: rgba(155, 169, 169, 0.959);
+    margin-top: 5vh;
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
+    color: inherit;
+}
+
+footer a:hover {
+    transition: 200ms;
+    color: rgba(144, 193, 193, 0.959);;
+} 
+
+/* MODAL START */
+.modal {
+    background-color: rgba(0, 0, 0, 0.856);
+    z-index: +2;
+    position: absolute;
+    width: 110vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal .container h1 {
+    margin: 1em;
+}
+
+/* MODAL END */
+
+@keyframes animation {
+    0%, 100% {
+        background-color: rgba(0, 38, 255, 0);
+    }
+    50% {
+        background-color: rgba(255, 0, 0, 0.134);
+    }
+}
+
+.hidden {
+    visibility: hidden;
+}
