@@ -53,9 +53,8 @@ function attTableElement() { //função usada para atualizar a parte visual da t
             let cellElement = document.querySelector(`#r${rowNumber}-c${columnNumber}`)
 
             cellElement.textContent = tableRepresentation[rowNumber][columnNumber]
-
             if (tableRepresentation[rowNumber][columnNumber] === tableSolution[rowNumber][columnNumber]) {
-                cellElement.style.background = 'blue'
+                //cellElement.style.background = 'blue'
             }
         }
     }
@@ -119,7 +118,6 @@ function wordPlacement() { //função responsavel por posicionar as palavras sel
                 test = true
                 trueTest = true
                 for (let i = 0; i < chosedWordString.length; i++) {
-
                     if (tableSolution[rowNumber][columnNumber+i] !== '0') {
                         test = false
                     }
@@ -139,17 +137,15 @@ function wordPlacement() { //função responsavel por posicionar as palavras sel
             }
         }
 
-       while (test == false && x > 3 && x < 8) { //nô que cuida do posicionamento das palavras na vertical
+        while (test == false && x > 3 && x < 8) { //nô que cuida do posicionamento das palavras na vertical
             console.log(x)
             rowNumber = Math.floor(Math.random() * tableSizeRow)
             columnNumber  = Math.floor(Math.random() * tableSizeColumn)
             
-
             if (tableSizeColumn - rowNumber >= chosedWordString.length) {
                 test = true
                 trueTest = true
                 for (let i = 0; i < chosedWordString.length; i++) {
-
                     if (tableSolution[rowNumber+i][columnNumber] !== '0') {
                         test = false
                     }
@@ -181,7 +177,6 @@ function wordPlacement() { //função responsavel por posicionar as palavras sel
                 test = true
                 trueTest = true
                 for (let i = 0; i < chosedWordString.length; i++) {
-
                     if (tableSolution[rowNumber+i][columnNumber+i] !== '0') {
                         test = false
                     }
@@ -202,32 +197,22 @@ function wordPlacement() { //função responsavel por posicionar as palavras sel
                     }
                 }
                 contError = contError + 1
-                console.log('pqp')
-                if (contError > 100) {
-                    let keepKnot = true
-                   // while (keepKnot = true) {
-                      //  keepKnot = false
-                        let chosedWordN = Math.floor(Math.random() * wordListBug.length)
-                        let newWord = wordListBug[chosedWordN]
-                       // if (chosedWordList.includes(newWord)) {
-                            keepKnot = false
-                        
-                            chosedWordList[x] = newWord
-                            chosedWordString = chosedWordList[x] 
-                            contError = 0
-                       
-                        console.log('Tentativa de substituiçãoda palavra')
-                    //}
+                if (contError > 100) {               
+                    let chosedWordN = Math.floor(Math.random() * wordListBug.length)
+                    let newWord = wordListBug[chosedWordN]         
+                    chosedWordList[x] = newWord
+                    chosedWordString = chosedWordList[x] 
+                    contError = 0
+                    console.log('Tentativa de substituiçãoda palavra')
                     console.log(`a palavra foi substituida. nova palavra: ${chosedWordString}`)
                 }
             }
         }
     }
-
-    tableSolutionToTableRepresentatio()
+    tableSolutionToTableRepresentation()
 }
 
-function tableSolutionToTableRepresentatio() {
+function tableSolutionToTableRepresentation() {
     for (let rowNumber = 0; rowNumber < tableSizeRow; rowNumber++) {
         for (let columnNumber = 0; columnNumber < tableSizeRow; columnNumber++) {
             if (tableSolution[rowNumber][columnNumber] !== '0') {
@@ -264,17 +249,18 @@ function eventListenerCreator() { //função responsavel por criar os event list
     }
 }
 
-
-//EVENTS
-btnStart.addEventListener('click', () => {
+function startGame() {
     choseWord()
-    
-
     wordPlacement() 
     randomFiller()
     attTableElement()
     eventListenerCreator()
     attWordListElement()
+}
+
+//EVENTS
+btnStart.addEventListener('click', () => {
+    startGame()
 })
 
 

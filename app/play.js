@@ -77,7 +77,7 @@ function getWordString() { //Função que retornara uma string formada pelas let
     }
 
     if (winningCount == 12) { 
-        //endGame()
+        endGame()
         console.log('Ganhou!')
     }
     
@@ -123,7 +123,6 @@ function diagonalCheck() {
             let temp = firstRow
             firstRow = secondRow
             secondRow = temp 
-
             temp = firstColumn
             firstColumn = secondColumn
             secondColumn = temp
@@ -163,4 +162,17 @@ function endGame() {
     modalElement.classList.remove('hidden')
 }
 
+function restartGame() {
+    tableRepresentation = []
+    tableSolution = []
+    checkedWordList = []
+    winningCount = 0
+    createTable()
+    startGame()
+}
+
 //EVENTOS
+btnRestart.addEventListener('click', () => {
+    modalElement.classList.add('hidden')
+    restartGame()
+})
