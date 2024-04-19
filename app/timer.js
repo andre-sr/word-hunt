@@ -34,4 +34,31 @@ function stopTimer() {
     createRecord(pastSeconds, attTimer())
 }
 
+//Abaixo funções relacionadas com o local storage
+function createRecord(pastSeconds, formatedTime) {
+    const record = {
+        formatedRec: formatedTime,
+        unformatedRec: pastSeconds
+    }
+    recordList.push(record)
+    recordList.sort((a, b) => a.unformatedRec - b.unformatedRec)
+    recordListCreator()  
+    toLocalStorage()  
+}
+
+function recordListCreator() {
+    recordListElement.innerHTML = ''
+    for (let i = 0; i < recordList.length; i++) {
+        let element = document.createElement('li')
+        element.textContent = recordList[i].formatedRec
+        recordListElement.append(element)        
+    }   
+}
+
+function toLocalStorage() {
+    localStorage.setItem('recordList', JSON.stringify(recordList))
+}
+
+recordListCreator()
+
 //EVENTOS
