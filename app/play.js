@@ -160,6 +160,7 @@ function dealWithCount(word) {
 
 function endGame() {
     modalElement.classList.remove('hidden')
+    stopTimer() 
 }
 
 function restartGame() {

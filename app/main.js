@@ -256,11 +256,13 @@ function startGame() {
     attTableElement()
     eventListenerCreator()
     attWordListElement()
+    startTimer()
 }
 
 //EVENTS
 btnStart.addEventListener('click', () => {
     startGame()
+    
 })
 
 
