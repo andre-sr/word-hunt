@@ -48,6 +48,8 @@ function getWordString() { //Função que retornara uma string formada pelas let
             let wordOnList = document.querySelector(`#word${chosedWordList.indexOf(word)}`)    
             wordOnList.classList.add('green-word')
             dealWithCount(word) 
+        } else {
+            wrongAnimation()
         }
     } else if (word = verticalCheck()) {
         if (chosedWordList.includes(word)) {
@@ -58,6 +60,8 @@ function getWordString() { //Função que retornara uma string formada pelas let
             let wordOnList = document.querySelector(`#word${chosedWordList.indexOf(word)}`)    
             wordOnList.classList.add('green-word')
             dealWithCount(word) 
+        }  else {
+            wrongAnimation()
         }
     } else if (word = diagonalCheck()) {
         if (chosedWordList.includes(word)) {
@@ -70,17 +74,22 @@ function getWordString() { //Função que retornara uma string formada pelas let
             let wordOnList = document.querySelector(`#word${chosedWordList.indexOf(word)}`)    
             wordOnList.classList.add('green-word')
             dealWithCount(word)
+        }  else {
+            wrongAnimation()
         }
     } else { // Caso as celulas selecionadas retornem uma "linha invalida" esta parte do código será executada
-        //wrongAnimation()
+        wrongAnimation()
         //refazer está animação e a lógica presente nela
+      //  tableContainer.style.animation = 'animation 1s linear'
+        
+       
     }
 
     if (winningCount == 12) { 
         endGame()
         console.log('Ganhou!')
     }
-    
+     
 }
 
 function horizontalCheck() {
@@ -137,7 +146,25 @@ function diagonalCheck() {
 }
 
 function wrongAnimation() {
-    tableContainer.style.animation = 'animation 1s'
+
+    function deleteAnimation () {
+        tableContainer.style = ''
+        console.log('Animação removida!')
+        clearInterval(intervalIdAnimation)
+        intervalIdAnimation = null
+        
+    }
+    tableContainer.style.animation = 'animation 0.5s'
+    
+   
+    //style="animation: 1s linear 0s 1 normal none running animation;
+
+
+    let dealWithAnimationTime = 0
+    let intervalIdAnimation = null
+
+    dealWithAnimationTime = 0
+    intervalIdAnimation = setInterval(deleteAnimation, 550)
 }
 
 function negativeChange(n1, n2) {
@@ -161,6 +188,7 @@ function dealWithCount(word) {
 function endGame() {
     modalElement.classList.remove('hidden')
     stopTimer() 
+    pastSeconds = 0
 }
 
 function restartGame() {

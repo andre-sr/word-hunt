@@ -1,0 +1,82 @@
+/* PARA CELULARES */
+@media (max-width: 767px) {
+    main {
+        margin: 1px 0px 1px 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .container-game-info, .container-right{
+        width: 8em;
+        margin-left: 2.5em;
+        padding: 0em;
+    }
+
+    table {
+        font-size: 1.5em;
+        font-weight: 600;
+        margin: 10px 0px;
+    }
+
+    td {
+        width: 40px;
+        height: 30px;
+        padding: 1px 4px;
+        border: 1px solid #ffffff0c;
+        text-align: center;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 1px; 
+    }
+
+    .word-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .word-list li {
+        margin-left: 10px;
+    }
+
+    .modal .container {
+        width: 80vw;
+    }
+
+    .modal .container button {
+        margin: 2em;
+    }
+
+    .record-list-container {
+        display: flex;
+        justify-content: left;
+        margin-top: 5px;
+    }
+
+    .record-list-container h1 {
+        margin-right: 5px;
+    }
+
+    .record-list-container ol {
+        display: flex;
+    }
+
+    .record-list-container ol li {
+        margin: 0 0px ;
+        display: flex;
+    }
+
+    .record-list-container ol li .bar {
+        visibility: visible;
+        margin: 0 4px ;
+    }
+
+    .modal {
+        width: 110vw;
+        height: 110vh;
+    }
+
+    .modal .container {
+        margin-top: -15em;
+    }
+}

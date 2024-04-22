@@ -48,9 +48,17 @@ function createRecord(pastSeconds, formatedTime) {
 
 function recordListCreator() {
     recordListElement.innerHTML = ''
-    for (let i = 0; i < recordList.length; i++) {
+    recordListLenght = recordList.length
+    if (recordList.length > 5) {
+        recordListLenght = 5
+    }
+    for (let i = 0; i < recordListLenght; i++) {
         let element = document.createElement('li')
         element.textContent = recordList[i].formatedRec
+        let spanBar = document.createElement('span')
+        spanBar.textContent = ' - '
+        spanBar.classList.add('bar')
+        element.append(spanBar)
         recordListElement.append(element)        
     }   
 }
