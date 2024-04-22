@@ -261,8 +261,8 @@ function startGame() {
 
 //EVENTS
 btnStart.addEventListener('click', () => {
-    startGame()
-    
+    btnStart.textContent = 'Restart'
+    restartGame()
 })
 
 
