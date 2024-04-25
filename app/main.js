@@ -17,9 +17,12 @@ const wordList = [
     "avestruz", "quadro", "cachecol", "laptop", "camisa", "caneta", "violão", "espada", "amendoim", "tubarão",
     "papagaio", "teclado", "espelho", "almofada", "colher", "travesseiro", "tênis", "cometa", "almofada", "travesseiro",
     "quadro", "vela", "escova", "pincel", "girafa", "escorregador", "pijama", "piscina", "escova", "espelho",
-    "mochila", "fantasia", "lápis", "hidratante", "fotografia", "caixa", "pente", "joaninha", "picolé", "diamante"
+    "mochila", "fantasia", "lápis", "hidratante", "fotografia", "caixa", "pente", "joaninha", "picolé", "diamante","abacate", "helicóptero", "leopardo", "gorila", "orangotango", "pinguim", "baleia", "golfinho", "tartaruga",
+    "lobo", "raposa", "urso", "veado", "javali", "esquilo", "castor", "lontra", "morcego", "coruja", "golfinho", "tartaruga", "veado", "lobo", "raposa", "esquilo", "lontra", "morcego", "panda", "canguru",
+    "tamanduá", "suricato", "chimpazé", "antílope", "marmota", "camaleão", "doninha", "texugo", "coiote",
+    "sagui", "quati", "rinoceronte", "hipopótamo", "zebra", 
 ];
-const wordListBug = ["pneu", "poggers", "pé", "chat", "inca"]  
+const wordListBug = ["pneu", "poggers", "pé", "chat", "inca", "corvo", "topo", "fogo", "copo", "ovo"]  
 
 let chosedWordList = []
 
@@ -110,7 +113,6 @@ function wordPlacement() { //função responsavel por posicionar as palavras sel
         let columnNumber
 
         while (test == false && x < 4) { //nô que cuida do posicionamento das palavras na horizontal
-            console.log(x)
             rowNumber = Math.floor(Math.random() * tableSizeRow)
             columnNumber  = Math.floor(Math.random() * tableSizeColumn)
 
@@ -138,7 +140,6 @@ function wordPlacement() { //função responsavel por posicionar as palavras sel
         }
 
         while (test == false && x > 3 && x < 8) { //nô que cuida do posicionamento das palavras na vertical
-            console.log(x)
             rowNumber = Math.floor(Math.random() * tableSizeRow)
             columnNumber  = Math.floor(Math.random() * tableSizeColumn)
             
@@ -161,15 +162,12 @@ function wordPlacement() { //função responsavel por posicionar as palavras sel
                     for (let i = 0; i < chosedWordString.length; i++) {
                         tableSolution[rowNumber+i][columnNumber] = chosedWordString[i]
                     }
-                }
-                
+                } 
             }
         }
 
         var contError = 0
         while (test == false && x > 7 && x < 12) { //nô responsavel pelo posicionamento das palavras na diagonal
-            //console.log(x)
-            
             rowNumber = Math.floor(Math.random() * tableSizeRow)
             columnNumber  = Math.floor(Math.random() * tableSizeColumn)
 
@@ -187,9 +185,6 @@ function wordPlacement() { //função responsavel por posicionar as palavras sel
                         trueTest = false
                     }
                     test = trueTest
-
-                    // Ideia de como resolver o bug: havera um contador de tentativa, quando as tentativa passarem de x número uma função será executada
-                    // a função serteara uma nova palavra e a substituira na chosedWordList e as tentativas continuaram. Desta forma a palavra provavelmente encaixara
                 } 
                 if (test === true && trueTest === true) {
                     for (let i = 0; i < chosedWordString.length; i++) {
@@ -203,8 +198,6 @@ function wordPlacement() { //função responsavel por posicionar as palavras sel
                     chosedWordList[x] = newWord
                     chosedWordString = chosedWordList[x] 
                     contError = 0
-                    console.log('Tentativa de substituiçãoda palavra')
-                    console.log(`a palavra foi substituida. nova palavra: ${chosedWordString}`)
                 }
             }
         }
@@ -220,18 +213,6 @@ function tableSolutionToTableRepresentation() {
             } 
         }
     }
-}
-
-function horizonPlacement() { //função responsavel pelas palavras que serão posicionadas na horizontal
-    
-}
-
-function verticalPlacement() { //função responsavel pelas palavras que serão posicionadas na vertical
-
-}
-
-function diagonalPlacement() { //função responsavel pelas palavras que serão posicionadas na diagonal
-
 }
 
 function eventListenerCreator() { //função responsavel por criar os event listener para todas as celulas do table

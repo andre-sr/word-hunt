@@ -16,7 +16,6 @@ let winningCount = 0
 
 //FUNCOES
 function firstClick(e) { //Função que pega a localização da primeira celula clicada por meio do id do elemento
-    console.log('teste')
     let stringId = e.srcElement.id
     let numberId = stringId.match(/\d+/g)
     firstRow = parseInt(numberId[0])
@@ -33,8 +32,7 @@ function secondClick(e) { //Função que pega a localização da segunda celula 
     secondColumn = parseInt(numberId[1])
     element.classList.remove('selected-cell')
     clickCount = true
-
-   getWordString()
+    getWordString()
 }
 
 function getWordString() { //Função que retornara uma string formada pelas letras existentes entre as duas celulas que foram clicadas
@@ -79,17 +77,11 @@ function getWordString() { //Função que retornara uma string formada pelas let
         }
     } else { // Caso as celulas selecionadas retornem uma "linha invalida" esta parte do código será executada
         wrongAnimation()
-        //refazer está animação e a lógica presente nela
-      //  tableContainer.style.animation = 'animation 1s linear'
-        
-       
     }
 
     if (winningCount == 12) { 
         endGame()
-        console.log('Ganhou!')
     }
-     
 }
 
 function horizontalCheck() {
@@ -146,24 +138,14 @@ function diagonalCheck() {
 }
 
 function wrongAnimation() {
-
     function deleteAnimation () {
         tableContainer.style = ''
-        console.log('Animação removida!')
         clearInterval(intervalIdAnimation)
         intervalIdAnimation = null
         
     }
     tableContainer.style.animation = 'animation 0.5s'
-    
-   
-    //style="animation: 1s linear 0s 1 normal none running animation;
-
-
-    let dealWithAnimationTime = 0
     let intervalIdAnimation = null
-
-    dealWithAnimationTime = 0
     intervalIdAnimation = setInterval(deleteAnimation, 550)
 }
 
@@ -181,7 +163,6 @@ function dealWithCount(word) {
     } else {
         checkedWordList.push(word)
         winningCount = winningCount + 1
-        console.log(winningCount)
     }
 }
 
