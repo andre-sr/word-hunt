@@ -23,8 +23,13 @@ main {
     /*visibility: hidden;*/
 }
 
+.container-game-info a {
+    font-size: 0.8em;
+}
 
-
+.container-game-info a:hover {
+    color: #ffffffbb;
+}
 
 .container-game-info button {
     width: 3.5em;
@@ -123,7 +128,7 @@ footer {
     text-align: center;
 }
 
-footer a {
+a {
     text-decoration: none;
     color: inherit;
 }
